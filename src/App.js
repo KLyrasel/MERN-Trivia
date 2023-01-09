@@ -5,11 +5,12 @@ import Home from './components/Home'
 import Game from './components/Game'
 
 function App() {
+
   return (
     <div className="App">
-      <Router>
-        <h1>TRIVIA APP</h1>
+      <h1>TRIVIA APP</h1>
 
+      <Router>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/game' element={<Game />} />
