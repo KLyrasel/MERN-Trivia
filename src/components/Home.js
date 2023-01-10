@@ -1,11 +1,19 @@
 import * as Mui from "@mui/material"
 import { useState } from "react"
 
-export default function Home() {
+export default function Home(props) {
 
     let [questionAmount, setQuestionAmount] = useState(10)
     let [difficulty, setDifficulty] = useState('random')
     let [category, setCategory] = useState('random')
+
+    const difficultyMarks = [
+        { value: 10, label: '10' },
+        { value: 20, label: '20' },
+        { value: 30, label: '30' },
+        { value: 40, label: '40' },
+        { value: 50, label: '50' }
+    ]
 
     return (
         <div>
@@ -15,27 +23,27 @@ export default function Home() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-evenly',
-                margin: '50px',
+                margin: '50px auto',
                 padding: '50px',
                 width: '500px',
-                height: '300px',
-                backgroundColor: 'tan'
+                height: '400px',
+                boxShadow: '0px 0px 20px 0px grey',
+                borderRadius: '30px'
             }}>
 
                 <Mui.Box>
-                    <Mui.FormLabel id='number-of-questions'>Number of Questions: {questionAmount}</Mui.FormLabel>
+                    <Mui.FormLabel id='number-of-questions'>Number of Questions</Mui.FormLabel>
                     <Mui.Slider
                         aria-labelledby='number-of-questions'
-                        valueLabelDisplay="auto"
-                        marks
-                        defaultValue={questionAmount}
+                        marks={difficultyMarks}
+                        value={questionAmount}
                         step={10} min={10} max={50}
                         onChange={(event) => setQuestionAmount(event.target.value)}
                     />
                 </Mui.Box>
 
                 <Mui.Box>
-                    <Mui.FormLabel id='difficulty'>Difficulty: {difficulty}</Mui.FormLabel>
+                    <Mui.FormLabel id='difficulty'>Difficulty</Mui.FormLabel>
                     <Mui.RadioGroup
                         row
                         aria-labelledby='difficulty'
@@ -51,28 +59,31 @@ export default function Home() {
                 </Mui.Box>
 
                 <Mui.Box>
-                    <Mui.FormLabel id='category'>Category: </Mui.FormLabel>
-                    <Mui.Select
-                        aria-labelledby='category'
-                        value={category}
-                        onChange={(event) => setCategory(event.target.value)}
-                    >
-                        <Mui.MenuItem value='random'>Random</Mui.MenuItem>
-                        <Mui.MenuItem value='arts_and_literature'>Arts & Literature</Mui.MenuItem>
-                        <Mui.MenuItem value='film_and_tv'>Film & TV</Mui.MenuItem>
-                        <Mui.MenuItem value='food_and_drink'>Food & Drink</Mui.MenuItem>
-                        <Mui.MenuItem value='general_knowledge'>General Knowledge</Mui.MenuItem>
-                        <Mui.MenuItem value='geography'>Geography</Mui.MenuItem>
-                        <Mui.MenuItem value='history'>History</Mui.MenuItem>
-                        <Mui.MenuItem value='music'>Music</Mui.MenuItem>
-                        <Mui.MenuItem value='science'>Science</Mui.MenuItem>
-                        <Mui.MenuItem value='society_and_culture'>Society & Culture</Mui.MenuItem>
-                        <Mui.MenuItem value='sport_and_leisure'>Sport & Leisure</Mui.MenuItem>
-                    </Mui.Select>
+                    <Mui.FormControl fullWidth variant='filled'>
+                        <Mui.InputLabel id='category'>Category</Mui.InputLabel>
+                        <Mui.Select
+                            labelId='category'
+                            value={category}
+                            label='Category'
+                            onChange={(event) => setCategory(event.target.value)}
+                        >
+                            <Mui.MenuItem value='random'>Random</Mui.MenuItem>
+                            <Mui.MenuItem value='arts_and_literature'>Arts & Literature</Mui.MenuItem>
+                            <Mui.MenuItem value='film_and_tv'>Film & TV</Mui.MenuItem>
+                            <Mui.MenuItem value='food_and_drink'>Food & Drink</Mui.MenuItem>
+                            <Mui.MenuItem value='general_knowledge'>General Knowledge</Mui.MenuItem>
+                            <Mui.MenuItem value='geography'>Geography</Mui.MenuItem>
+                            <Mui.MenuItem value='history'>History</Mui.MenuItem>
+                            <Mui.MenuItem value='music'>Music</Mui.MenuItem>
+                            <Mui.MenuItem value='science'>Science</Mui.MenuItem>
+                            <Mui.MenuItem value='society_and_culture'>Society & Culture</Mui.MenuItem>
+                            <Mui.MenuItem value='sport_and_leisure'>Sport & Leisure</Mui.MenuItem>
+                        </Mui.Select>
+                    </Mui.FormControl>
                 </Mui.Box>
 
                 <Mui.Link href='/game'>
-                    <Mui.Button variant='contained'>PLAY</Mui.Button>
+                    <Mui.Button fullWidth variant='contained'>PLAY</Mui.Button>
                 </Mui.Link>
             </Mui.Box>
         </div>
