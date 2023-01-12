@@ -14,8 +14,8 @@ function App() {
 
   // Takes the trivia parameters specified in the Game Launcher component, parses them into the api query string and stores the completed url within the 'api_url' variable.
   const handleSettings = (settings) => {
-    let limit = settings.limit
-    let category = settings.category === 'random' ? '' : `categories=${settings.category}&`
+    let category = settings.category === 'random' ? '' : `categories=${settings.category}`
+    let limit = `&limit=${settings.limit}`
     let difficulty = settings.difficulty === 'random' ? '' : `&difficulty=${settings.difficulty}`
     let API_URL = 'https://the-trivia-api.com/api/questions?' + category + limit + difficulty
     setApi_Url(API_URL)
