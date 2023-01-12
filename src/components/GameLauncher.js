@@ -1,12 +1,13 @@
 import * as Mui from "@mui/material"
 import { useState } from "react"
 
-export default function Home(props) {
+export default function GameLauncher(props) {
 
-    let [questionAmount, setQuestionAmount] = useState(10)
-    let [difficulty, setDifficulty] = useState('random')
-    let [category, setCategory] = useState('random')
+    let [questionLimit, setQuestionLimit] = useState(10) // Stores the question limit
+    let [difficulty, setDifficulty] = useState('random') // Stores the difficulty level
+    let [category, setCategory] = useState('random') // Stores the category of the trivia
 
+    // Rich array used to specify markings for the question limit slider
     const difficultyMarks = [
         { value: 10, label: '10' },
         { value: 20, label: '20' },
@@ -36,9 +37,9 @@ export default function Home(props) {
                     <Mui.Slider
                         aria-labelledby='number-of-questions'
                         marks={difficultyMarks}
-                        value={questionAmount}
+                        value={questionLimit}
                         step={10} min={10} max={50}
-                        onChange={(event) => setQuestionAmount(event.target.value)}
+                        onChange={(event) => setQuestionLimit(event.target.value)}
                     />
                 </Mui.Box>
 
@@ -82,9 +83,8 @@ export default function Home(props) {
                     </Mui.FormControl>
                 </Mui.Box>
 
-                <Mui.Link href='/game'>
-                    <Mui.Button fullWidth variant='contained'>PLAY</Mui.Button>
-                </Mui.Link>
+                <Mui.Button fullWidth variant='contained' onClick={() => props.handleSettings({ limit: questionLimit, difficulty: difficulty, category: category })}>PLAY</Mui.Button>
+
             </Mui.Box>
         </div>
     )
