@@ -15,7 +15,7 @@ function Login() {
             boxShadow: '0px 0px 20px 0px grey',
             borderRadius: '30px'
         }}>
-        <Mui.FormLabel id='number-of-questions' sx={{
+        <Mui.FormLabel id='login' sx={{
             color: "rgb(0,0,0)",
             fontFamily: 'Helvetica',
             fontWeight: 700,
@@ -31,7 +31,7 @@ function Login() {
           required
           id="outlined-required"
           label="Required"
-          defaultValue=""/>
+          defaultValue="Username"/>
         </div>
         </Mui.Box>
         <Mui.Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '30ch' },
@@ -43,7 +43,7 @@ function Login() {
          required
          id="outlined-required"
          label="Required"
-         defaultValue=""/>
+         defaultValue="Password"/>
         </div>
         </Mui.Box>
         </Mui.Box>
