@@ -1,3 +1,5 @@
+import * as Mui from "@mui/material"
+
 export default function Game(props) {
 
     const data = props.data.result.read() // ***NEED TO READ UP ON HOW THIS WORKS***
@@ -12,6 +14,8 @@ export default function Game(props) {
     return (
         <div>
             <h1>GAME</h1>
+
+            <Mui.Button variant='contained' onClick={() => props.resetSettings()}>Back</Mui.Button>
 
             {renderQuestions}
         </div>

@@ -19,7 +19,7 @@ export default function GameLauncher(props) {
 
     return (
         <div>
-            <h1>HOME</h1>
+            <h1>Game Launcher</h1>
 
             <Mui.Box sx={{
                 display: 'flex',
