@@ -1,6 +1,7 @@
 import react from "react"
 import * as Mui from "@mui/material"
 import { Link } from "react-router-dom"
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 
 const theme = Mui.createTheme();
 
@@ -13,6 +14,24 @@ function Navbar() {
       <Mui.Box sx={{ flexGrow: 1 }}>
         <Mui.AppBar position="static" style={{ margin: 0 }}>
           <Mui.Toolbar>
+          <EmojiObjectsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Mui.Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'Helvetica',
+              fontWeight: 700,
+              letterSpacing: '2.5px',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            TRIVIA
+          </Mui.Typography>
             <Mui.IconButton
               size="large"
               edge="start"
@@ -35,7 +54,7 @@ function Navbar() {
             </Mui.Typography>
 
             <Mui.Typography variant="h6" component="div"  sx={{
-              pl: 15,
+              pl: 10,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Helvetica',
               fontWeight: 700,
@@ -47,7 +66,7 @@ function Navbar() {
              </Link>
           </Mui.Typography>
           <Mui.Typography variant="h6" component="div"  sx={{
-              pl: 15,
+              pl: 10,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Helvetica',
               fontWeight: 700,
@@ -60,7 +79,7 @@ function Navbar() {
             </Link>
           </Mui.Typography>
             <Mui.Button color="primary" sx={{
-              pl:120,
+              pl:110,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Helvetica',
               fontWeight: 700,
