@@ -7,15 +7,20 @@ import Home from './components/Home'
 function App() {
 
   return (
-    <div className="App">
-      <h1>TRIVIA APP</h1>
 
+    <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home/>}/>
+          <Route path='/game' element={<Game/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/scoreboard' element={<Scoreboard/>}/>
+          <Route path='/navbar' element={<Navbar/>}/>
         </Routes>
       </Router>
     </div>
+
   );
 }
 

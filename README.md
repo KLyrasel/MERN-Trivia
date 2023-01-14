@@ -1,1 +1,1 @@
-Trivia
+This is a trivia app in which the user can choose a difficulty and category, or completely randomize it and try their best at answering the questions within a certain amount of time. 

@@ -1,7 +1,12 @@
+import React from "react"
 import * as Mui from "@mui/material"
-import { useState } from "react"
 
-const LoginPage = () => {
-    const [checked, setChecked] = React.useState(true);
-    const handle
+function Login() {
+    return(
+        <div>
+
+        </div>
+    )
 }
+
+export default Login
