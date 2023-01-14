@@ -14,7 +14,7 @@ function Navbar() {
       <Mui.Box sx={{ flexGrow: 1 }}>
         <Mui.AppBar position="static" style={{ margin: 0 }}>
           <Mui.Toolbar>
-          <EmojiObjectsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, pl:5, }} />
+          <EmojiObjectsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, pl:5, }}/>
           <Mui.Typography
             variant="h6"
             noWrap
