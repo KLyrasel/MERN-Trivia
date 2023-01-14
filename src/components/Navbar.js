@@ -60,7 +60,7 @@ function Navbar() {
             </Link>
           </Mui.Typography>
             <Mui.Button color="primary" sx={{
-              pr:10,
+              pl:120,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Helvetica',
               fontWeight: 700,
