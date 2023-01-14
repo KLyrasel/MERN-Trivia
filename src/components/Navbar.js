@@ -17,10 +17,21 @@ function Navbar() {
             >
             </Mui.IconButton>
             <Mui.Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <Link to="/">
-              Home
+                <Link to="/" style={{ textDecoration: 'none' }}>
+              HOME
               </Link>
             </Mui.Typography>
+
+            <Mui.Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+               <Link to="/Scoreboard" style={{ textDecoration: 'none' }}>
+               HIGHSCORES
+             </Link>
+          </Mui.Typography>
+          <Mui.Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+             <Link to="/" style={{ textDecoration: 'none' }}>
+               USER
+            </Link>
+          </Mui.Typography>
             <Mui.Button color="inherit">Login</Mui.Button>
           </Mui.Toolbar>
         </Mui.AppBar>
