@@ -14,7 +14,7 @@ function Navbar() {
       <Mui.Box sx={{ flexGrow: 1 }}>
         <Mui.AppBar position="static" style={{ margin: 0 }}>
           <Mui.Toolbar>
-          <EmojiObjectsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <EmojiObjectsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, pl:5, }} />
           <Mui.Typography
             variant="h6"
             noWrap
@@ -41,7 +41,7 @@ function Navbar() {
             >
             </Mui.IconButton>
             <Mui.Typography variant="h6" component="div"  sx={{
-              pl: 15,
+              pl: 25,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Helvetica',
               fontWeight: 700,
@@ -83,6 +83,7 @@ function Navbar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'Helvetica',
               fontWeight: 700,
+              fontSize: 20,
               letterSpacing: '2.5px',
               color: 'inherit',
               textDecoration: 'none',
