@@ -20,7 +20,11 @@ function Login() {
             fontFamily: 'Helvetica',
             fontWeight: 700,
             fontSize: 30,
-            letterSpacing: '1px',}}>
+            letterSpacing: '1px',
+            pt:8,
+            pb: 0,
+            m: 0,
+            pr:20,}}>
             Login</Mui.FormLabel>
         <Mui.Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '30ch' },
          }}
@@ -34,7 +38,7 @@ function Login() {
           defaultValue="Username"/>
         </div>
         </Mui.Box>
-        <Mui.Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '30ch' },
+        <Mui.Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '30ch', pb: 12, },
         }}
          noValidate
         autoComplete="off">
