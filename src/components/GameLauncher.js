@@ -1,5 +1,6 @@
 import * as Mui from "@mui/material"
 import { useState } from "react"
+import { Link } from 'react-router-dom'
 
 export default function GameLauncher(props) {
 
@@ -84,6 +85,8 @@ export default function GameLauncher(props) {
                 </Mui.Box>
 
                 <Mui.Button fullWidth variant='contained' onClick={() => props.handleSettings({ limit: questionLimit, difficulty: difficulty, category: category })}>PLAY</Mui.Button>
+
+                <Link to='/tester' state={{ limit: questionLimit }}>TESTER</Link>
 
             </Mui.Box>
         </div>

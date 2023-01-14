@@ -6,6 +6,7 @@ import { useState, useEffect, Suspense } from 'react'
 import GameLauncher from './components/GameLauncher'
 import Game from './components/Game'
 import { searchTriviaAPI } from './SearchAPIHelper'
+import Tester from './components/Tester';
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
               {renderGame()}
             </>
           } />
+          <Route path='/tester' element={<Tester />} />
         </Routes>
       </Router>
     </div>
