@@ -88,7 +88,9 @@ function Navbar() {
               color: 'inherit',
               textDecoration: 'none',
             }}>
-              Login</Mui.Button>
+              <Link to="/Login" style={{ textDecoration: 'none' , color: 'inherit', }}>
+                LOGIN
+              </Link></Mui.Button>
           </Mui.Toolbar>
         </Mui.AppBar>
       </Mui.Box>
