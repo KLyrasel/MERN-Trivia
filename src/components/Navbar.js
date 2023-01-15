@@ -74,7 +74,7 @@ function Navbar() {
               color: 'inherit',
               textDecoration: 'none',
             }}>
-             <Link to="/" style={{ textDecoration: 'none' , color: 'inherit', }}>
+             <Link to="/User" style={{ textDecoration: 'none' , color: 'inherit', }}>
                USER
             </Link>
           </Mui.Typography>
