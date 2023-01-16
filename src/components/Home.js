@@ -1,3 +1,5 @@
+import * as Mui from "@mui/material"
+
 import { useState, useEffect, Suspense } from 'react'
 
 import GameLauncher from './GameLauncher'
@@ -34,7 +36,7 @@ export default function Home() {
     const renderGame = () => {
         if (data) {
             return (
-                <Suspense fallback={<h1>Loading Game...</h1>}>
+                <Suspense fallback={<Mui.CircularProgress />}>
                     <Game data={data} resetSettings={resetSettings} />
                 </Suspense>
             )
