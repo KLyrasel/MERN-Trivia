@@ -20,7 +20,7 @@ const promiseSuspender = (promise) => {
         result = error
     })
 
-    // The suspender will return 
+    // The suspender will return either the trivia data or an error once it has resolved the promise
     return {
         read() {
             // If the promise hasn't been initialized then trigger it.
