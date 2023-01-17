@@ -7,12 +7,16 @@ export default function PostGame({ postGameData }) {
     const renderPostGameData = performanceData.map((userResult, index) => {
 
         return (
-            <Mui.Paper key={index} sx={{ border: `2px solid ${userResult.isCorrect ? 'green' : 'red'}` }}>
-                <Mui.Typography>{index + 1}. {triviaData[index].question}</Mui.Typography>
-                <Mui.Typography>Selection: <b>{userResult.choice}</b></Mui.Typography>
-                <Mui.Typography>Answer: <b>{triviaData[index].correctAnswer.toUpperCase()}</b></Mui.Typography>
-                <Mui.Typography>Answered In: <b>{5 - userResult.seconds} second(s)</b></Mui.Typography>
-            </Mui.Paper>
+            <Mui.Zoom key={index} in={true} style={{ transitionDelay: true ? `${200 * index}ms` : '0ms' }}>
+                <Mui.Paper sx={{ border: `2px solid ${userResult.isCorrect ? 'green' : 'red'}` }}>
+                    <Mui.Box sx={{ backgroundColor: userResult.isCorrect ? 'green' : 'red' }}>
+                        <Mui.Typography color={'white'}>{index + 1}. {triviaData[index].question}</Mui.Typography>
+                    </Mui.Box>
+                    <Mui.Typography>Selection: <b>{userResult.choice}</b></Mui.Typography>
+                    <Mui.Typography>Answer: <b>{triviaData[index].correctAnswer.toUpperCase()}</b></Mui.Typography>
+                    <Mui.Typography>Answered In: <b>{5 - userResult.seconds} second(s)</b></Mui.Typography>
+                </Mui.Paper>
+            </Mui.Zoom>
         )
     })
 

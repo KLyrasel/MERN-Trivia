@@ -93,7 +93,7 @@ export default function Game(props) {
             shuffleAnswers()
             startTimer()
         }
-    }, [index])
+    }, [index, performanceData, data])
 
     return (
 
