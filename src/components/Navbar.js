@@ -1,4 +1,3 @@
-import react from "react"
 import * as Mui from "@mui/material"
 import { Link } from "react-router-dom"
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';

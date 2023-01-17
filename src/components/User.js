@@ -1,4 +1,3 @@
-import react from 'react'
 import * as Mui from "@mui/material"
 
 function User() {
