@@ -12,6 +12,7 @@ export default function Game(props) {
 
     let [currentTimerDate, setCurrentTimerDate] = useState(Date.now()) // Stores the start time of a question
     let [seconds, setSeconds] = useState() // Stores the amount of seconds remaining for a question
+    let [intervalID, setIntervalID] = useState(null)
 
     // Shuffle the order of the elements in the answers array.
     const shuffleAnswers = () => {
@@ -33,7 +34,6 @@ export default function Game(props) {
 
     // Assign a button to each answer in it's new random order.
     let renderAnswers = shuffledAnswers.map((answer, indexKey) => {
-
         return (
             <Mui.Button variant='contained' color={answer === data[index].correctAnswer ? 'success' : 'primary'} key={indexKey} fullWidth onClick={(e) => checkAnswer(e.target.innerText)}>{answer}</Mui.Button>
         )
@@ -42,26 +42,31 @@ export default function Game(props) {
     // Check whether the user got the question right or wrong.
     const checkAnswer = (choice) => {
         if (choice === data[index].correctAnswer.toUpperCase()) {
-            setIndex(index + 1)
+            console.log('CORRECT!')
         }
         else {
             console.log('WRONG!')
         }
+
+        prepNextQuestion(intervalID)
     }
 
     // Initiates the timer
     const startTimer = () => {
-        const endTime = currentTimerDate + 30000
+        const endTime = currentTimerDate + 5000
 
-        let intervalID = setInterval(() => {
+        let interval = setInterval(() => {
+            setIntervalID(interval)
             const currentTime = new Date().getTime()
             const timeLeft = endTime - currentTime
 
             // Converts the milliseconds to seconds
             const secs = Math.floor((timeLeft % (60 * 1000)) / 1000)
 
+            console.log(interval)
+
             if (timeLeft < 0) {
-                clearInterval(intervalID.current)
+                prepNextQuestion(interval)
             }
             else {
                 setSeconds(secs)
@@ -69,12 +74,15 @@ export default function Game(props) {
         })
     }
 
-    useEffect(() => {
-        startTimer()
-    })
+    const prepNextQuestion = (interval) => {
+        clearInterval(interval)
+        setCurrentTimerDate(Date.now())
+        setIndex(index + 1)
+    }
 
     useEffect(() => {
         shuffleAnswers()
+        startTimer()
     }, [index])
 
     return (
