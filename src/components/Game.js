@@ -7,15 +7,18 @@ export default function Game(props) {
     const data = props.data.result.read() // ***NEED TO READ UP ON HOW THIS WORKS***
 
     let [index, setIndex] = useState(0) // Stores the index of the current question being prompted
-    let answers = [data[index].correctAnswer, ...data[index].incorrectAnswers] // Stores an array of the four possible answers
-    let [shuffledAnswers, setShuffledAnswers] = useState(answers) // Stores the shuffled answers array
+
+    let [shuffledAnswers, setShuffledAnswers] = useState([]) // Stores the shuffled answers array
 
     let [currentTimerDate, setCurrentTimerDate] = useState(Date.now()) // Stores the start time of a question
     let [seconds, setSeconds] = useState() // Stores the amount of seconds remaining for a question
     let [intervalID, setIntervalID] = useState(null)
 
+    let [performanceData, setPerformanceData] = useState([])
+
     // Shuffle the order of the elements in the answers array.
     const shuffleAnswers = () => {
+        let answers = [data[index].correctAnswer, ...data[index].incorrectAnswers] // Stores an array of the four possible answers
         let currentIndex = answers.length
         let randomIndex
 
@@ -34,20 +37,24 @@ export default function Game(props) {
 
     // Assign a button to each answer in it's new random order.
     let renderAnswers = shuffledAnswers.map((answer, indexKey) => {
-        return (
-            <Mui.Button variant='contained' color={answer === data[index].correctAnswer ? 'success' : 'primary'} key={indexKey} fullWidth onClick={(e) => checkAnswer(e.target.innerText)}>{answer}</Mui.Button>
-        )
+        if (index < data.length) {
+            return (
+                <Mui.Button variant='contained' color={answer === data[index].correctAnswer ? 'success' : 'primary'} key={indexKey} fullWidth onClick={(e) => checkAnswer(e.target.innerText)}>{answer}</Mui.Button>
+            )
+        }
     })
 
     // Check whether the user got the question right or wrong.
     const checkAnswer = (choice) => {
+        let isCorrect
         if (choice === data[index].correctAnswer.toUpperCase()) {
-            console.log('CORRECT!')
+            isCorrect = true
         }
         else {
-            console.log('WRONG!')
+            isCorrect = false
         }
 
+        setPerformanceData([...performanceData, { choice, isCorrect, seconds }])
         prepNextQuestion(intervalID)
     }
 
@@ -63,9 +70,8 @@ export default function Game(props) {
             // Converts the milliseconds to seconds
             const secs = Math.floor((timeLeft % (60 * 1000)) / 1000)
 
-            console.log(interval)
-
             if (timeLeft < 0) {
+                setPerformanceData([...performanceData, { choice: 'none', isCorrect: false, seconds: 0 }])
                 prepNextQuestion(interval)
             }
             else {
@@ -81,9 +87,13 @@ export default function Game(props) {
     }
 
     useEffect(() => {
-        shuffleAnswers()
-        startTimer()
-    }, [index])
+        if (performanceData.length >= data.length) {
+            props.handlePostGameData({ performanceData, triviaData: data })
+        } else {
+            shuffleAnswers()
+            startTimer()
+        }
+    }, [index, performanceData, data])
 
     return (
 
@@ -105,7 +115,7 @@ export default function Game(props) {
 
                 <Mui.Paper variant='outlined' sx={{ margin: '30px auto', width: 'inherit' }}>
 
-                    <Mui.Typography variant='h6'>{data[index].question}</Mui.Typography>
+                    <Mui.Typography variant='h6'>{index >= data.length ? '' : `${index + 1}. ${data[index].question}`}</Mui.Typography>
 
                     <Timer seconds={seconds} />
 
