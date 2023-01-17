@@ -80,11 +80,11 @@ function Login() {
             variant="contained">
             {'Login'}
           </Mui.Button>
-          <Mui.Button
+          <Mui.Button color="primary"
             variant="contained"
+            type="submit"
             class="signup-page"
-            id="signup-page"
-            type="submit">
+            id="signup-page">
             {<Link to="/Signup" style={{ textDecoration: 'none' , color: 'inherit',}}>
                  SIGN UP
             </Link>}
