@@ -5,11 +5,13 @@ import { useState, useEffect, Suspense } from 'react'
 import GameLauncher from './GameLauncher'
 import Game from './Game'
 import { searchTriviaAPI } from '../SearchAPIHelper'
+import PostGame from "./PostGame"
 
 export default function Home() {
 
     let [api_url, setApi_Url] = useState('') // Stores the parsed api url.
     let [data, setData] = useState(null) // Stores the data fetched from the trivia api.
+    let [postGameData, setPostGameData] = useState(null)
 
     // Takes the trivia parameters specified in the Game Launcher component, parses them into the api query string and stores the completed url within the 'api_url' variable.
     const handleSettings = (settings) => {
@@ -25,6 +27,10 @@ export default function Home() {
         setData(null)
     }
 
+    const handlePostGameData = (postGameResults) => {
+        setPostGameData(postGameResults)
+    }
+
     // Once 'api_url' has been assigned a new api url value, a fetch request is sent with the result stored within the 'data' variable.
     useEffect(() => {
         if (api_url) {
@@ -35,11 +41,18 @@ export default function Home() {
     // Renders the game once the trivia data has been received, otherwise Game Launcher gets rendered.
     const renderGame = () => {
         if (data) {
-            return (
-                <Suspense fallback={<Mui.CircularProgress />}>
-                    <Game data={data} resetSettings={resetSettings} />
-                </Suspense>
-            )
+            if (postGameData) {
+                return (
+                    <PostGame postGameData={postGameData} />
+                )
+            }
+            else {
+                return (
+                    <Suspense fallback={<Mui.CircularProgress />}>
+                        <Game data={data} resetSettings={resetSettings} handlePostGameData={handlePostGameData} />
+                    </Suspense>
+                )
+            }
         } else {
             return (
                 <GameLauncher handleSettings={handleSettings} />
@@ -49,7 +62,7 @@ export default function Home() {
 
     return (
         <div>
-            <h1>Home</h1>
+            <h1></h1>
 
             {renderGame()}
 
