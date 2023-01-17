@@ -30,7 +30,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            TRIVIAPOP
+            TRIVIA
           </Mui.Typography>
             <Mui.IconButton
               size="large"

@@ -1,8 +1,17 @@
-import React from "react"
+import React, { useState} from "react"
 import * as Mui from "@mui/material"
 import { Link } from "react-router-dom"
 
+
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const[dataInput, setdataInput] = useState("");
+  const submitData = () => {
+    const information = { email: email, password: password };
+    setdataInput([information]);
+  }
+
     return(
         <div>
         <Mui.Box sx={{
@@ -16,6 +25,7 @@ function Login() {
             boxShadow: '0px 0px 20px 0px grey',
             borderRadius: '30px'
         }}>
+
         <Mui.FormLabel id='login' sx={{
             color: "rgb(0,0,0)",
             fontFamily: 'Helvetica',
@@ -28,6 +38,8 @@ function Login() {
             pr:20,}}>
             Login
             </Mui.FormLabel>
+
+
         <Mui.Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '30ch' },
          }}
          noValidate
@@ -35,9 +47,14 @@ function Login() {
         <div>
         <Mui.TextField
           required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Username"/>
+          type="text"
+          name="email"
+          id="email"
+          value={email}
+          label="Username"
+          placeholder="Username"
+          onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         </Mui.Box>
         <Mui.Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '30ch', pb: 5, },
@@ -47,9 +64,14 @@ function Login() {
         <div>
         <Mui.TextField
          required
-         id="outlined-required"
-         label="Required"
-         defaultValue="Password"/>
+         type="text"
+         name="password"
+         id="password"
+         value={password}
+         label="Password"
+         placeholder="********"
+         onChange={(e) => setPassword(e.target.value)}
+         />
         </div>
         </Mui.Box>
         <Mui.Box display="flex" justifyContent="space-evenly" paddingBottom="30px" margin="0" paddingTop="0">
@@ -58,12 +80,13 @@ function Login() {
             variant="contained">
             {'Login'}
           </Mui.Button>
-
           <Mui.Button
-            type="submit"
-            variant="contained">
-            { <Link to="/Signup" style={{ textDecoration: 'none' , color: 'inherit',}}>
-                 Sign up
+            variant="contained"
+            class="signup-page"
+            id="signup-page"
+            type="submit">
+            {<Link to="/Signup" style={{ textDecoration: 'none' , color: 'inherit',}}>
+                 SIGN UP
             </Link>}
           </Mui.Button>   
         </Mui.Box>
