@@ -14,7 +14,7 @@ export default function PostGame({ postGameData }) {
                     </Mui.Box>
                     <Mui.Typography>Selection: <b>{userResult.choice}</b></Mui.Typography>
                     <Mui.Typography>Answer: <b>{triviaData[index].correctAnswer.toUpperCase()}</b></Mui.Typography>
-                    <Mui.Typography>Answered In: <b>{5 - userResult.seconds} second(s)</b></Mui.Typography>
+                    <Mui.Typography>Answered In: <b>{30 - userResult.seconds} second(s)</b></Mui.Typography>
                 </Mui.Paper>
             </Mui.Zoom>
         )
