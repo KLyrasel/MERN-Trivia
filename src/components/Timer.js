@@ -5,11 +5,11 @@ export default function Timer({ seconds }) {
     return (
         <>
             <Mui.Typography>Seconds Left:{seconds}</Mui.Typography>
-            <Mui.LinearProgress variant='determinate' value={(seconds / 5) * 100} sx={{ margin: '10px', borderRadius: '5px', height: '10px' }} />
+            <Mui.LinearProgress variant='determinate' value={(seconds / 30) * 100} sx={{ margin: '10px', borderRadius: '5px', height: '10px' }} />
         </>
     )
 }
 
 Timer.defaultProps = {
-    seconds: 5
+    seconds: 30
 }

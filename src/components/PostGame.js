@@ -22,7 +22,6 @@ export default function PostGame({ postGameData }) {
 
     return (
         <div>
-            <h1>POST GAME</h1>
 
             <Mui.Box sx={{
                 display: 'flex',
