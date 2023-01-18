@@ -12,6 +12,8 @@ function Login() {
     setdataInput([information]);
   }
 
+  //Creates values for password and email, as well as a value to include a combination of both to submit that data
+
     return(
         <div>
         <Mui.Box sx={{
