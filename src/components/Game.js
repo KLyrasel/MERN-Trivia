@@ -98,7 +98,7 @@ export default function Game(props) {
     return (
 
         <div>
-            <h1>GAME</h1>
+            <h1>TRIVIA MASTER</h1>
 
             <Mui.Box sx={{
                 display: 'flex',
