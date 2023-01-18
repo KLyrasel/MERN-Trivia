@@ -22,10 +22,6 @@ export default function PostGame({ postGameData }) {
 
     return (
         <div>
-<<<<<<< HEAD
-            <h1>TRIVIA MASTER</h1>
-=======
->>>>>>> 03decb173eb9d086af1e2aa4c3244972c0633057
 
             <Mui.Box sx={{
                 display: 'flex',
