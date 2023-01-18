@@ -18,7 +18,6 @@ export default function GameLauncher(props) {
 
     return (
         <div>
-            <h1>TRIVIA MASTER</h1>
 
             <Mui.Box sx={{
                 display: 'flex',

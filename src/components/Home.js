@@ -62,7 +62,8 @@ export default function Home() {
 
     return (
         <div>
-            <h1></h1>
+
+            <h1>TRIVIA MASTER</h1>
 
             {renderGame()}
 

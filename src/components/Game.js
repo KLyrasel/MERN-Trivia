@@ -39,7 +39,7 @@ export default function Game(props) {
     let renderAnswers = shuffledAnswers.map((answer, indexKey) => {
         if (index < data.length) {
             return (
-                <Mui.Button variant='contained' color={answer === data[index].correctAnswer ? 'success' : 'primary'} key={indexKey} fullWidth onClick={(e) => checkAnswer(e.target.innerText)}>{answer}</Mui.Button>
+                <Mui.Button variant='contained' key={indexKey} fullWidth onClick={(e) => checkAnswer(e.target.innerText)}>{answer}</Mui.Button>
             )
         }
     })
@@ -60,7 +60,7 @@ export default function Game(props) {
 
     // Initiates the timer
     const startTimer = () => {
-        const endTime = currentTimerDate + 5000
+        const endTime = currentTimerDate + 30000
 
         let interval = setInterval(() => {
             setIntervalID(interval)
@@ -98,7 +98,6 @@ export default function Game(props) {
     return (
 
         <div>
-            <h1>GAME</h1>
 
             <Mui.Box sx={{
                 display: 'flex',
