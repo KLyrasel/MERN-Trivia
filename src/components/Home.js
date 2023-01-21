@@ -43,7 +43,7 @@ export default function Home() {
         if (data) {
             if (postGameData) {
                 return (
-                    <PostGame postGameData={postGameData} />
+                    <PostGame postGameData={postGameData} resetSettings={resetSettings} />
                 )
             }
             else {

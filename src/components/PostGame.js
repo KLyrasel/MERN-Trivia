@@ -1,11 +1,33 @@
 import * as Mui from "@mui/material"
 
-export default function PostGame({ postGameData }) {
+import { useState, useEffect } from "react"
+import axios from "axios"
 
-    const { performanceData, triviaData } = postGameData
+export default function PostGame({ postGameData, resetSettings }) {
 
+    const { performanceData, triviaData } = postGameData // Destructures the player's performance data and the trivia data
+
+    let [playerName, setPlayerName] = useState('Anonymous') // Stores the player's name
+    let [playerScore, setPlayerScore] = useState(10) // Stores the player's score
+
+    // Posts the player's highscore to the Trivia Master database
+    const submitHighscore = () => {
+        // Sends highscore data to the post route of the database api
+        axios.post("http://localhost:3001/api/posthighscore", {
+            player_name: playerName,
+            player_score: playerScore,
+            question_count: triviaData.length
+        }).then((result) => {
+            console.log('Result: ', result)
+            resetSettings()
+            window.alert("Insert was successful")
+        }).catch(err => {
+            console.log('Error: ', err)
+        })
+    }
+
+    // Render trivia results
     const renderPostGameData = performanceData.map((userResult, index) => {
-
         return (
             <Mui.Zoom key={index} in={true} style={{ transitionDelay: true ? `${200 * index}ms` : '0ms' }}>
                 <Mui.Paper sx={{ border: `2px solid ${userResult.isCorrect ? 'green' : 'red'}` }}>
@@ -34,9 +56,13 @@ export default function PostGame({ postGameData }) {
                 borderRadius: '30px'
             }}>
                 <Mui.Typography variant='h4'>POST GAME RESULTS</Mui.Typography>
+
                 <Mui.Stack spacing={2} sx={{ margin: '10px' }}>
                     {renderPostGameData}
                 </Mui.Stack>
+
+                <Mui.Button variant='contained' onClick={() => submitHighscore()}>Test Submit</Mui.Button>
+
             </Mui.Box>
         </div>
     )
