@@ -1,7 +1,7 @@
 import * as Mui from "@mui/material"
 import { useState } from "react"
 
-export default function GameLauncher(props) {
+export default function GameLauncher({ handleSettings }) {
 
     let [questionLimit, setQuestionLimit] = useState(10) // Stores the question limit
     let [difficulty, setDifficulty] = useState('random') // Stores the difficulty level
@@ -18,7 +18,6 @@ export default function GameLauncher(props) {
 
     return (
         <div>
-
             <Mui.Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -82,7 +81,7 @@ export default function GameLauncher(props) {
                     </Mui.FormControl>
                 </Mui.Box>
 
-                <Mui.Button fullWidth variant='contained' onClick={() => props.handleSettings({ limit: questionLimit, difficulty: difficulty, category: category })}>PLAY</Mui.Button>
+                <Mui.Button fullWidth variant='contained' onClick={() => handleSettings({ limit: questionLimit, difficulty: difficulty, category: category })}>PLAY</Mui.Button>
 
             </Mui.Box>
         </div>

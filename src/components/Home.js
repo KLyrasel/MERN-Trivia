@@ -9,12 +9,14 @@ import PostGame from "./PostGame"
 
 export default function Home() {
 
+    let [triviaSpecs, setTriviaSpecs] = useState('')
     let [api_url, setApi_Url] = useState('') // Stores the parsed api url.
     let [data, setData] = useState(null) // Stores the data fetched from the trivia api.
     let [postGameData, setPostGameData] = useState(null)
 
     // Takes the trivia parameters specified in the Game Launcher component, parses them into the api query string and stores the completed url within the 'api_url' variable.
     const handleSettings = (settings) => {
+        setTriviaSpecs(settings)
         let category = settings.category === 'random' ? '' : `categories=${settings.category}`
         let limit = `&limit=${settings.limit}`
         let difficulty = settings.difficulty === 'random' ? '' : `&difficulty=${settings.difficulty}`
@@ -23,6 +25,7 @@ export default function Home() {
     }
 
     const resetSettings = () => {
+        setTriviaSpecs('')
         setApi_Url('')
         setData(null)
     }
@@ -43,7 +46,7 @@ export default function Home() {
         if (data) {
             if (postGameData) {
                 return (
-                    <PostGame postGameData={postGameData} resetSettings={resetSettings} />
+                    <PostGame postGameData={postGameData} triviaSpecs={triviaSpecs} resetSettings={resetSettings} />
                 )
             }
             else {
