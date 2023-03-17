@@ -1,11 +1,12 @@
 import * as Mui from "@mui/material"
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect, Suspense, SetStateAction } from 'react'
 
 import GameLauncher from './GameLauncher'
 import Game from './Game'
 import { searchTriviaAPI } from '../SearchAPIHelper'
 import PostGame from "./PostGame"
+import React from "react"
 
 export default function Home() {
 
@@ -14,7 +15,7 @@ export default function Home() {
     let [postGameData, setPostGameData] = useState(null)
 
     // Takes the trivia parameters specified in the Game Launcher component, parses them into the api query string and stores the completed url within the 'api_url' variable.
-    const handleSettings = (settings) => {
+    const handleSettings = (settings: { category: string; limit: any; difficulty: string }) => {
         let category = settings.category === 'random' ? '' : `categories=${settings.category}`
         let limit = `&limit=${settings.limit}`
         let difficulty = settings.difficulty === 'random' ? '' : `&difficulty=${settings.difficulty}`
@@ -27,7 +28,7 @@ export default function Home() {
         setData(null)
     }
 
-    const handlePostGameData = (postGameResults) => {
+    const handlePostGameData = (postGameResults: SetStateAction<null>) => {
         setPostGameData(postGameResults)
     }
 

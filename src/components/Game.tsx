@@ -2,7 +2,7 @@ import * as Mui from "@mui/material"
 import { useEffect, useState } from "react"
 import Timer from "./Timer"
 
-export default function Game(props) {
+export default function Game(props: { data: { result: { read: () => any } }; handlePostGameData: (arg0: { performanceData: never[]; triviaData: any }) => void; resetSettings: () => void }) {
 
     const data = props.data.result.read() // ***NEED TO READ UP ON HOW THIS WORKS***
 
@@ -45,7 +45,7 @@ export default function Game(props) {
     })
 
     // Check whether the user got the question right or wrong.
-    const checkAnswer = (choice) => {
+    const checkAnswer = (choice: any) => {
         let isCorrect
         if (choice === data[index].correctAnswer.toUpperCase()) {
             isCorrect = true

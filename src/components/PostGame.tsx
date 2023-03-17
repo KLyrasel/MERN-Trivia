@@ -1,10 +1,11 @@
 import * as Mui from "@mui/material"
+import React from "react"
 
 export default function PostGame({ postGameData }) {
 
     const { performanceData, triviaData } = postGameData
 
-    const renderPostGameData = performanceData.map((userResult, index) => {
+    const renderPostGameData = performanceData.map((userResult: { isCorrect: any; choice: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; seconds: number }, index: React.Key | null | undefined) => {
 
         return (
             <Mui.Zoom key={index} in={true} style={{ transitionDelay: true ? `${200 * index}ms` : '0ms' }}>
